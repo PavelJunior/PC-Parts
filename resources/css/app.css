@@ -1,0 +1,38 @@
+.collapsible-description .collapse:not(.show) {
+    display: block;
+    height: 46px !important;
+    overflow: hidden;
+}
+
+.collapsible-description .collapsing {
+    min-height: 46px !important;
+}
+
+.collapsible-description a.collapsed:after  {
+    content: '+ Show More';
+}
+
+.collapsible-description a:not(.collapsed):after {
+    content: '- Show Less';
+}
+
+.home-img {
+    position: relative;
+    margin: 10px;
+}
+
+.home-img img{
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #aaaaaa;
+}
+
+.home-img-text {
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 90px;
+    left: 70px;
+}
+
