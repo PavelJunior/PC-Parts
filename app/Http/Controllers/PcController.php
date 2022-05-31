@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactInfoRequest;
 use App\Http\Requests\PcRequest;
+use App\Http\Requests\PcRequestEdit;
 use App\Mail\ContactMail;
 use App\Models\Contact;
 use App\Models\Pc;
@@ -41,6 +42,10 @@ class PcController extends BaseController
 
     public function CreatePage()
     {
+        if (!Auth::check()) {
+            return redirect()->route('pcs');
+        }
+
         $this->middleware('auth');
 
         return view('layouts.app', [
@@ -50,6 +55,10 @@ class PcController extends BaseController
 
     public function UpdateStatus(Request $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect()->route('pcs');
+        }
+
         $userId = Auth::user()->id;
         $pc = Pc::findOrFail($id);
 
@@ -69,6 +78,10 @@ class PcController extends BaseController
 
     public function CreatePageSubmit(PcRequest $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('pcs');
+        }
+
         $this->middleware('auth');
 
         if($request->hasFile('image')) {
@@ -97,13 +110,17 @@ class PcController extends BaseController
 
     public function EditPage($id)
     {
+        if (!Auth::check()) {
+            return redirect()->route('pcs');
+        }
+
         $this->middleware('auth');
 
         $pc = Pc::findOrFail($id);
         $currentUserId = Auth::user()->id;
 
         if(intval($currentUserId) !== intval($pc->user_id) || intval($pc->status_id) !== 1) {
-            return redirect('/pcs');
+            return redirect('pcs');
         }
 
         return view('layouts.app', [
@@ -112,8 +129,12 @@ class PcController extends BaseController
         ]);
     }
 
-    public function EditPageSubmit(PcRequest $request, $id)
+    public function EditPageSubmit(PcRequestEdit $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect()->route('pcs');
+        }
+
         $this->middleware('auth');
 
         $pc = Pc::findOrFail($id);
@@ -135,7 +156,7 @@ class PcController extends BaseController
         $pc->title = $request->input('title');
         $pc->description = $request->input('description');
         $pc->status_id = 1; // active
-        $pc->user_id = 1;
+        $pc->user_id = $currentUserId;
         $pc->image_name = $filenameToStore ?? $pc->image_name;;
         $pc->save();
 

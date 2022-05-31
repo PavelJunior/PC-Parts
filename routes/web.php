@@ -19,7 +19,7 @@ use App\Http\Controllers\AccountController;
 */
 
 Route::group(['prefix' => '/parts'], function () {
-    Route::get('/', [PartController::class, 'ShowAll']);
+    Route::get('/', [PartController::class, 'ShowAll'])->name('parts');
     Route::get('create', [PartController::class, 'CreatePage']);
     Route::post('create', [PartController::class, 'CreatePageSubmit']);
     Route::get('edit/{id}', [PartController::class, 'EditPage'])
@@ -30,7 +30,7 @@ Route::group(['prefix' => '/parts'], function () {
 });
 
 Route::group(['prefix' => '/pcs'], function () {
-    Route::get('/', [PcController::class, 'ShowAll']);
+    Route::get('/', [PcController::class, 'ShowAll'])->name('pcs');
     Route::get('create', [PcController::class, 'CreatePage']);
     Route::post('create', [PcController::class, 'CreatePageSubmit']);
     Route::get('edit/{id}', [PcController::class, 'EditPage'])

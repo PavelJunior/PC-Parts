@@ -1,6 +1,6 @@
 <div>
     <h1>Parts</h1>
-    <p>Buy, Sell & Trade Computers with Local Kenyan's</p>
+    <p>Buy, Sell & Trade Computer Parts with Local Kenyan's</p>
 
     <form onsubmit="handleFilterSubmit(event)" id="filter-form">
         <div class="input-group flex-nowrap">

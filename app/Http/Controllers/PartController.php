@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PartRequest;
+use App\Http\Requests\PartRequestEdit;
 use App\Models\Part;
 use App\Models\PartCategory;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -46,6 +47,10 @@ class PartController extends BaseController
 
     public function CreatePage()
     {
+        if (!Auth::check()) {
+            return redirect()->route('parts');
+        }
+
         $this->middleware('auth');
 
         $categories = PartCategory::all();
@@ -58,6 +63,10 @@ class PartController extends BaseController
 
     public function UpdateStatus(Request $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect()->route('parts');
+        }
+
         $userId = Auth::user()->id;
         $part = Part::findOrFail($id);
 
@@ -77,6 +86,10 @@ class PartController extends BaseController
 
     public function CreatePageSubmit(PartRequest $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('parts');
+        }
+
         $this->middleware('auth');
 
         if($request->hasFile('image')) {
@@ -106,13 +119,17 @@ class PartController extends BaseController
 
     public function EditPage($id)
     {
+        if (!Auth::check()) {
+            return redirect()->route('parts');
+        }
+
         $this->middleware('auth');
 
         $part = Part::findOrFail($id);
         $currentUserId = Auth::user()->id;
 
         if(intval($currentUserId) !== intval($part->user_id) || intval($part->status_id) !== 1) {
-            return redirect('/parts');
+            return redirect('parts');
         }
 
         $categories = PartCategory::all();
@@ -125,8 +142,12 @@ class PartController extends BaseController
         ]);
     }
 
-    public function EditPageSubmit(PartRequest $request, $id)
+    public function EditPageSubmit(PartRequestEdit $request, $id)
     {
+        if (!Auth::check()) {
+            return redirect()->route('parts');
+        }
+
         $this->middleware('auth');
 
         $part = Part::findOrFail($id);
@@ -149,7 +170,7 @@ class PartController extends BaseController
         $part->description = $request->input('description');
         $part->category_id = $request->input('category');
         $part->status_id = 1; // active
-        $part->user_id = 1;
+        $part->user_id = $currentUserId;
         $part->image_name = $filenameToStore ?? $part->image_name;;
         $part->save();
 

@@ -23,8 +23,10 @@ class AccountController extends BaseController
             return redirect()->route('home');
         }
 
-        $pcs = Pc::where('status_id', '1')->get();
-        $parts = Part::where('status_id', '1')->get();
+        $userId = Auth::user()->id;
+
+        $pcs = Pc::where('status_id', '1')->where('user_id', $userId)->get();
+        $parts = Part::where('status_id', '1')->where('user_id', $userId)->get();
 
         $listing = new Collection();
 
