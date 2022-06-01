@@ -36,3 +36,9 @@
     left: 70px;
 }
 
+.pagination > .active > .page-link,
+.pagination > .active > .page-link:hover
+{
+    color: white !important;
+    background-color: rgb(25, 135, 84) !important;
+}

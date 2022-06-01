@@ -4,7 +4,7 @@
 
     <form onsubmit="handleFilterSubmit(event)" id="filter-form">
         <div class="input-group flex-nowrap">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-success">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
@@ -30,7 +30,7 @@
 
     @auth
         <div class="mt-3 d-grid d-md-flex justify-content-md-center mb-md-5 mt-md-5">
-            <a class="btn btn-primary" href="/parts/create">List a Computer Part</a>
+            <a class="btn btn-success" href="/parts/create">List a Computer Part</a>
         </div>
     @endauth
     @guest
@@ -55,11 +55,11 @@
                     <span class="badge bg-secondary mb-4">{{ $part->category->name }}</span>
                     <br>
                     @if(!auth()->user() || intval(auth()->user()->id) !== intval($part->user_id))
-                        <button type="button" class="btn btn-primary contact-btn" data-bs-toggle="modal" data-bs-target="#contact-form-modal" data-id="{{ $part->id }}">
+                        <button type="button" class="btn btn-success contact-btn" data-bs-toggle="modal" data-bs-target="#contact-form-modal" data-id="{{ $part->id }}">
                             Contact Seller
                         </button>
                     @else
-                        <a type="button" class="btn btn-primary edit-btn" href="/parts/edit/{{$part->id}}">
+                        <a type="button" class="btn btn-success edit-btn" href="/parts/edit/{{$part->id}}">
                             Edit
                         </a>
                         <button type="button" class="btn btn-secondary edit-btn" onclick="markListingAsSold({{$part->id}}, 'parts')">
@@ -82,7 +82,7 @@
                 <li class="page-item {{ $parts->currentPage() == 1 ? 'disabled' : '' }}" >
                     <a class="page-link" href={{ $parts->previousPageUrl() }} tabindex="-1" aria-disabled="true">Previous</a>
                 </li>
-                <li class="page-item active" aria-current="page">
+                <li class="page-item active bg-success" aria-current="page">
                     <span class="page-link">{{ $parts->currentPage() }}</span>
                 </li>
                 <li class="page-item {{ $parts->currentPage() == $parts->lastPage() ? 'disabled' : '' }}">
@@ -116,7 +116,7 @@
                             <label for="contact-phone-input">Phone</label>
                             <input name="phone" class="form-control" id="contact-phone-input" aria-describedby="phone" placeholder="Enter phone number" required>
                         </div>
-                        <button type="button" class="btn btn-primary mt-2" onclick="submitContactForm('parts')" disabled>Submit</button>
+                        <button type="button" class="btn btn-success mt-2" onclick="submitContactForm('parts')" disabled>Send Inquiry</button>
                     </form>
                 </div>
             </div>

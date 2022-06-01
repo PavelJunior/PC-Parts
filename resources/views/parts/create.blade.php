@@ -28,7 +28,7 @@
             </div>
 
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary mb-4">Confirm</button>
+                <button type="submit" class="btn btn-success mb-4">Confirm</button>
             </div>
         </form>
     </x-form-card>

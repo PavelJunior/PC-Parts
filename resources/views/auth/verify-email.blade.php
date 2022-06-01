@@ -14,7 +14,7 @@
 
             <!-- Submit button -->
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary mb-4">Resend Verification Email</button>
+                <button type="submit" class="btn btn-success mb-4">Resend Verification Email</button>
             </div>
         </form>
 
@@ -23,7 +23,7 @@
 
             <!-- Submit button -->
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary mb-4">Log Out</button>
+                <button type="submit" class="btn btn-success mb-4">Log Out</button>
             </div>
         </form>
     </x-form-card>

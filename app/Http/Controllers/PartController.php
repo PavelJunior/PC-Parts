@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PartRequest;
 use App\Http\Requests\PartRequestEdit;
+use App\Http\Traits\PictureUtils;
 use App\Models\Part;
 use App\Models\PartCategory;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -12,12 +13,12 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
+
 
 
 class PartController extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, PictureUtils;
 
     public function ShowAll()
     {
@@ -93,12 +94,7 @@ class PartController extends BaseController
         $this->middleware('auth');
 
         if($request->hasFile('image')) {
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $filenameToStore = $filename . '_' . time() . '.' . $extension;
-            Image::make($request->file('image'))
-                ->save('uploads/' . $filenameToStore);
+            $filenameToStore = $this->ConvertAndSaveImage($request->file('image'));
         }
 
         $user = Auth::user();
@@ -158,12 +154,7 @@ class PartController extends BaseController
         }
 
         if($request->hasFile('image')) {
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $filenameToStore = $filename . '_' . time() . '.' . $extension;
-            Image::make($request->file('image'))
-                ->save('uploads/' . $filenameToStore);
+            $filenameToStore = $this->ConvertAndSaveImage($request->file('image'));
         }
 
         $part->title = $request->input('title');

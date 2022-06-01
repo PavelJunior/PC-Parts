@@ -3,8 +3,14 @@
     <p>Buy, Sell & Trade PCs & Computer Parts with Local Kenyan's</p>
 
     <h2>Mission</h2>
-    <p>PCs & Parts aims to stimulate the growth of computing in Kenya by giving power to compute, build and maintain into the hands of the people, It's an open-source of knowledge and resources.</p>
-    <p>Use PCs & Parts resources and marketplace to build your own computer for use or sale.</p>
+    <p>PCs & Parts aims to stimulate the growth of computing in Kenya by putting the power to compute, build and maintain into the hands of the people</p>
+    <p>Our ecosystem educates and provides the infrastructure to help this mission.</p>
+    <p>Use PCs & Parts resources below to:</p>
+    <ol>
+        <li>Learn how to build a PC from scratch or by using a Raspberry Pi.</li>
+        <li>Equipped yourself to source computer parts for your own needs or to start selling through our platform.</li>
+        <li>Buy, sell and trade already assembled <a href="/pcs">PCs</a> or <a href="/parts">computer parts</a>.</li>
+    </ol>
 
     <h2>Resources</h2>
     <div class="mb-3">
@@ -28,11 +34,11 @@
 
     <div class="d-flex flex-wrap">
         <a href="/pcs" class="home-img">
-            <img src="/uploads/pcs.png" alt="pcs" width="200" height="200">
+            <img src="/img/pcs.png" alt="pcs" width="200" height="200">
             <h6 class="home-img-text">PCs</h6>
         </a>
         <a href="/parts" class="home-img">
-            <img src="/uploads/parts.png" alt="parts" width="200" height="200">
+            <img src="/img/parts.png" alt="parts" width="200" height="200">
             <h6 class="home-img-text">Parts</h6>
         </a>
     </div>

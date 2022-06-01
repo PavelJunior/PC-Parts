@@ -4,7 +4,7 @@
 
     <form onsubmit="handleFilterSubmit(event)" id="filter-form">
         <div class="input-group flex-nowrap">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-success">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
@@ -15,7 +15,7 @@
 
     @auth
         <div class="mt-3 d-grid d-md-flex justify-content-md-center mb-md-5 mt-md-5">
-            <a class="btn btn-primary" href="/pcs/create">List a Computer</a>
+            <a class="btn btn-success" href="/pcs/create">List a Computer</a>
         </div>
     @endauth
     @guest
@@ -38,11 +38,11 @@
                     </div>
                     <br>
                     @if(!auth()->user() || intval(auth()->user()->id) !== intval($computer->user_id))
-                        <button type="button" class="btn btn-primary contact-btn" data-bs-toggle="modal" data-bs-target="#contact-form-modal" data-id="{{ $computer->id }}">
+                        <button type="button" class="btn btn-success contact-btn" data-bs-toggle="modal" data-bs-target="#contact-form-modal" data-id="{{ $computer->id }}">
                             Contact Seller
                         </button>
                     @else
-                        <a type="button" class="btn btn-primary edit-btn" href="/pcs/edit/{{$computer->id}}">
+                        <a type="button" class="btn btn-success edit-btn" href="/pcs/edit/{{$computer->id}}">
                             Edit
                         </a>
                         <button type="button" class="btn btn-secondary edit-btn" onclick="markListingAsSold({{$computer->id}}, 'pcs')">
@@ -99,7 +99,7 @@
                             <label for="contact-phone-input">Phone</label>
                             <input name="phone" class="form-control" id="contact-phone-input" aria-describedby="phone" placeholder="Enter phone number" required>
                         </div>
-                        <button type="button" class="btn btn-primary mt-2" onclick="submitContactForm('pcs')" disabled>Submit</button>
+                        <button type="button" class="btn btn-success mt-2" onclick="submitContactForm('pcs')" disabled>Send Inquiry</button>
                     </form>
                 </div>
             </div>

@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ContactInfoRequest;
 use App\Http\Requests\PcRequest;
 use App\Http\Requests\PcRequestEdit;
-use App\Mail\ContactMail;
-use App\Models\Contact;
+use App\Http\Traits\PictureUtils;
 use App\Models\Pc;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -14,13 +12,10 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use Intervention\Image\Facades\Image;
-
 
 class PcController extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, PictureUtils;
 
     public function ShowAll()
     {
@@ -36,7 +31,7 @@ class PcController extends BaseController
 
         return view('layouts.app', [
             'page' => 'pcs.showAll',
-            'computers' => $pcs->orderBy('created_at', 'desc')->paginate(20),
+            'computers' => $pcs->orderBy('created_at', 'desc')->paginate(2),
         ]);
     }
 
@@ -85,12 +80,7 @@ class PcController extends BaseController
         $this->middleware('auth');
 
         if($request->hasFile('image')) {
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $filenameToStore = $filename . '_' . time() . '.' . $extension;
-            Image::make($request->file('image'))
-                ->save('uploads/' . $filenameToStore);
+            $filenameToStore = $this->ConvertAndSaveImage($request->file('image'));
         }
 
         $user = Auth::user();
@@ -145,12 +135,7 @@ class PcController extends BaseController
         }
 
         if($request->hasFile('image')) {
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $filenameToStore = $filename . '_' . time() . '.' . $extension;
-            Image::make($request->file('image'))
-                ->save('uploads/' . $filenameToStore);
+            $filenameToStore = $this->ConvertAndSaveImage($request->file('image'));
         }
 
         $pc->title = $request->input('title');

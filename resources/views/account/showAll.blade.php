@@ -9,11 +9,11 @@
     </div>
 
 
-    <div class="mt-3 d-grid d-md-flex justify-content-md-center mb-md-5 mt-md-5">
-        <a class="btn btn-primary" href="/pcs/create">List a Computer</a>
+    <div class="mt-3 d-grid d-md-flex justify-content-md-center">
+        <a class="btn btn-success" href="/pcs/create">List a Computer</a>
     </div>
-    <div class="mt-3 d-grid d-md-flex justify-content-md-center mb-md-5 mt-md-5">
-        <a class="btn btn-primary" href="/parts/create">List a Computer Part</a>
+    <div class="mt-3 d-grid d-md-flex justify-content-md-center">
+        <a class="btn btn-success" href="/parts/create">List a Computer Part</a>
     </div>
 
 
@@ -30,11 +30,11 @@
                         <a class="link-primary collapsed mt-2" type="button" data-bs-toggle="collapse" data-bs-target="{{ "#collapseDescription" . $listing->type . $listing->id }}" aria-expanded="false" aria-controls="{{ "collapseDescription" . $listing->type . $listing->id }}"></a>
                     </div>
                     @if ($listing->type === 'parts')
-                        <span class="badge bg-secondary mb-4">{{ $listing->category->name }}</span> <br>
+                        <span class="badge bg-secondary mb-3 mt-3">{{ $listing->category->name }}</span> <br>
                     @endif
 
                     <br>
-                    <a type="button" class="btn btn-primary edit-btn" href="/{{$listing->type}}/edit/{{$listing->id}}">
+                    <a type="button" class="btn btn-success edit-btn" href="/{{$listing->type}}/edit/{{$listing->id}}">
                         Edit
                     </a>
                     <button type="button" class="btn btn-secondary edit-btn" onclick="markListingAsSold({{$listing->id}}, '{{ $listing->type }}')">

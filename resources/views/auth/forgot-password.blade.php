@@ -18,7 +18,7 @@
 
             <!-- Submit button -->
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary mb-4">Email Password Reset Link</button>
+                <button type="submit" class="btn btn-success mb-4">Email Password Reset Link</button>
             </div>
         </form>
     </x-form-card>

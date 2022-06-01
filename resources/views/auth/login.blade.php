@@ -39,7 +39,7 @@
 
             <!-- Submit button -->
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary mb-4">Sign in</button>
+                <button type="submit" class="btn btn-success mb-4">Sign in</button>
             </div>
 
             <!-- Register buttons -->

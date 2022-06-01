@@ -32,7 +32,7 @@
 
             <!-- Submit button -->
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary mb-4">Reset Password</button>
+                <button type="submit" class="btn btn-success mb-4">Reset Password</button>
             </div>
         </form>
     </x-form-card>

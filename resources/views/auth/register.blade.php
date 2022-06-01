@@ -35,7 +35,7 @@
 
             <!-- Submit button -->
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary mb-4">Register</button>
+                <button type="submit" class="btn btn-success mb-4">Register</button>
             </div>
 
             <!-- Register buttons -->
