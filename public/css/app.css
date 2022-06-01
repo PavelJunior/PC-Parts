@@ -36,18 +36,6 @@
     left: 70px;
 }
 
-/*.pagination > li > .page-link:focus,*/
-
-/*.pagination > li > .page-link:hover,*/
-
-/*.pagination > li > .page-link {*/
-
-/*    color: rgb(25, 135, 84) !important;*/
-
-/*    border-color: rgb(25, 135, 84) !important;*/
-
-/*}*/
-
 .pagination > .active > .page-link,
 .pagination > .active > .page-link:hover
 {
