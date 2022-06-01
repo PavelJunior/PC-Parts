@@ -31,7 +31,7 @@ class PcController extends BaseController
 
         return view('layouts.app', [
             'page' => 'pcs.showAll',
-            'computers' => $pcs->orderBy('created_at', 'desc')->paginate(2),
+            'computers' => $pcs->orderBy('created_at', 'desc')->paginate(20),
         ]);
     }
 
