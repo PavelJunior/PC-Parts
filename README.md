@@ -3,7 +3,7 @@ The app build with Laravel v9.17.0 for the backend and bootstrap v5.2.0 for the 
 
 # How to run locally
 
-* create local .env file with filled in `DB_*` and `MAIL_*` values (you need to create local MYSQL DB and use some email account for SMTP)
+* create local .env file with filled in `DB_*` and `MAIL_*` values (you need to create local MYSQL DB and use mailgun account for SMTP)
 * run `composer install` to create vendor folder and install dependencies
 * run `npm install` to install of npm dependencies
 * run `php artisan migrate` to migrate DB tables 

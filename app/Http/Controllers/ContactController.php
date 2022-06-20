@@ -30,8 +30,6 @@ class ContactController extends BaseController
         $id = $request->input('id');
         $type = $request->input('type');
 
-        error_log($type);
-
         if ($type === "parts") {
             $previouslyContacted = Contact::where('part_id', $id)->where('email', $email)
                 ->orwhere('part_id', $id)->where('phone', $phone)->get();
