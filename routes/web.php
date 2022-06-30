@@ -44,6 +44,9 @@ Route::post('/contact', [ContactController::class, 'SendContactInfo']);
 
 Route::get('/account', [AccountController::class, 'ShowAll'])->name('account');
 
+// seller authentication routes
+Route::get('/seller',[\App\Http\Controllers\SellerController::class, 'index'] );
+
 Route::get('/', function () {
     return view('layouts.app', [
         'page' => 'home',
